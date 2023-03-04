@@ -1,0 +1,43 @@
+id: unsafe-inline-check
+
+info:
+  name: Unsafe Inline Check
+  author: jordan jago
+  severity: low
+  description: Checks for unsafe inline in HTML files.
+
+tags:
+  - html
+  - inline-script
+
+# Define the requests to be made by the template
+requests:
+  - method: GET
+    path:
+      - /
+    matchers:
+      - type: word
+        words:
+          - '<script>'
+    attacks:
+      - type: command
+        bin: bash
+        args: 
+          - "-c"
+          - "echo '{{FUZZ}}' | htmlhint --config=htmlhint.yaml -"
+
+# Define the HTMLHint configuration file
+htmlhint:
+  "tag-pair": true
+  "tagname-lowercase": true
+  "attr-lowercase": true
+  "attr-value-double-quotes": true
+  "doctype-first": false
+  "spec-char-escape": true
+  "id-unique": true
+  "head-script-disabled": true
+  "style-disabled": true
+  "inline-script-disabled": true
+  "space-tab-mixed-disabled": "space"
+  "attr-no-duplication": true
+  "alt-require": true
