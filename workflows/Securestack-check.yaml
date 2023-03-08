@@ -5,10 +5,10 @@ author: jordan jago
 
 workflows:
  - template: technologies/
-    matchers:
-     - name: apache
-       subtemplates:
-        - tags: apache
+     matchers:
+       - name: apache
+          subtemplates:
+            - tags: apache
  - template:
      matchers:
      - name: wordpress
