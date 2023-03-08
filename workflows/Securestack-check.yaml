@@ -1,23 +1,16 @@
-
 id: securestack-workflow
 info:
- name: securestack workflow
- author: jordan jago
+name: securestack workflow
+author: jordan jago
 
 workflows:
  - template: technologies/
-   matchers:
+    matchers:
      - name: apache
        subtemplates:
-         - tags: apache
- -template:
-  matchers:
-    - name: wordpress
-      subtemplates:
-         - tags: wordpress
-
-
-
-
-
-
+        - tags: apache
+ - template:
+     matchers:
+     - name: wordpress
+        subtemplates:
+           - tags: wordpress
